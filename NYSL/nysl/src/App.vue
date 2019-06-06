@@ -1,38 +1,40 @@
 <template>
-  <v-app>
-    <v-toolbar app>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn
-        flat
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
-        <span class="mr-2">Latest Release</span>
-      </v-btn>
-    </v-toolbar>
-
-    <v-content>
-      <HelloWorld/>
-    </v-content>
-  </v-app>
+  <div id="app">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import nyslChat from "./components/chat.vue";
+import nyslPlayers from "./components/players.vue";
+import nyslHome from "./components/home.vue";
+import nyslDetailMatch from "./components/detailMatch.vue";
+import nyslMatch from "./components/match.vue";
+import nyslResults from "./components/results.vue";
+import nyslSchedule from "./components/schedule.vue";
+import nyslTeams from "./components/teams.vue";
+import nysldetailTeam from "./components/detailTeam.vue";
+import nyslClassification from "./components/classification.vue";
+import nyslLogin from "./components/login.vue";
+import nyslRegistration from "./components/register.vue";
 
 export default {
-  name: 'App',
+  name: "app",
   components: {
-    HelloWorld
-  },
-  data () {
-    return {
-      //
-    }
+    nyslChat,
+    nyslPlayers,
+    nyslLogin,
+    nyslRegistration,
+    nyslHome,
+    nyslDetailMatch,
+    nyslResults,
+    nyslSchedule,
+    nyslTeams,
+    nysldetailTeam,
+    nyslClassification
   }
-}
+};
 </script>
+
+<style>
+</style>
