@@ -7,41 +7,16 @@
   </head>
   <h2>TEAMS</h2>
   <div>
-    <input type="text" placeholder="Search Team/Player">
+    <input type="text" placeholder="Search Team" v-model="search">
   </div>
   <div class="next">
-    <ul>
-      <li>
-        <router-link to="/team/t:TEAM A">TEAM A</router-link>
-      </li>
-      <li>
-        <router-link to="/team/t:TEAM B">TEAM B</router-link>
-      </li>
-      <li>
-        <router-link to="/team/t:TEAM C">TEAM C</router-link>
-      </li>
-      <li>
-        <router-link to="/team/t:TEAM D">TEAM D</router-link>
-      </li>
-      <li>
-        <router-link to="/team/t:TEAM E">TEAM E</router-link>
-      </li>
-      <li>
-        <router-link to="/team/t:TEAM F">TEAM F</router-link>
-      </li>
-      <li>
-        <router-link to="/team/t:TEAM G">TEAM G</router-link>
-      </li>
-      <li>
-        <router-link to="/team/t:TEAM H">TEAM H</router-link>
-      </li>
-      <li>
-        <router-link to="/team/t:TEAM I">TEAM I</router-link>
-      </li>
-      <li>
-        <router-link to="/team/t:TEAM J">TEAM J</router-link>
-      </li>
-    </ul>
+    <div class="next">
+      <ul>
+        <li v-for="team in getSearch">
+          <router-link :to="'/team/t:'+ team.name">{{team.name}}</router-link>
+        </li>
+      </ul>
+    </div>
   </div>
   <div class="iconBox">
     <div class="controls">
@@ -61,7 +36,29 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      search: "",
+      currentTeam: []
+    };
+  },
+  created() {},
+  computed: {
+    teams() {
+      return this.$store.state.teams;
+    },
+    getSearch: function() {
+      this.currentTeam = this.teams.filter(team => {
+        return (
+          team.name.toLowerCase().match(this.search.toLowerCase()) ||
+          this.search.length === 0
+        );
+      });
+      return this.currentTeam;
+    }
+  }
+};
 </script>
 
 <style scoped>

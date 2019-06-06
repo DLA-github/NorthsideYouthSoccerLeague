@@ -8,7 +8,7 @@
   <div class="page">
     <ul>
       <li>
-        <router-link to="/class/sched">|| Standing |</router-link>
+        <router-link to="/class">|| Standing |</router-link>
       </li>
       <li>
         <router-link to="/class/sched">| Schedule |</router-link>
@@ -20,38 +20,11 @@
   </div>
   <h2>STANDING</h2>
   <div class="next">
-    <ul>
-      <li>
-        <router-link to="/team/t:TEAM A">TEAM A</router-link>
+    <ol>
+      <li v-for="pos in standing">
+        <router-link :to="'/team/t:'+ pos.name">{{pos.name}}</router-link>
       </li>
-      <li>
-        <router-link to="/team/t:TEAM B">TEAM B</router-link>
-      </li>
-      <li>
-        <router-link to="/team/t:TEAM C">TEAM C</router-link>
-      </li>
-      <li>
-        <router-link to="/team/t:TEAM D">TEAM D</router-link>
-      </li>
-      <li>
-        <router-link to="/team/t:TEAM E">TEAM E</router-link>
-      </li>
-      <li>
-        <router-link to="/team/t:TEAM F">TEAM F</router-link>
-      </li>
-      <li>
-        <router-link to="/team/t:TEAM G">TEAM G</router-link>
-      </li>
-      <li>
-        <router-link to="/team/t:TEAM H">TEAM H</router-link>
-      </li>
-      <li>
-        <router-link to="/team/t:TEAM I">TEAM I</router-link>
-      </li>
-      <li>
-        <router-link to="/team/t:TEAM J">TEAM J</router-link>
-      </li>
-    </ul>
+    </ol>
   </div>
   <div class="iconBox">
     <div class="controls">
@@ -71,7 +44,23 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      standing: []
+    };
+  },
+  created() {
+    this.standing = this.teams.sort((a, b) => {
+      return a.pos - b.pos;
+    });
+  },
+  computed: {
+    teams() {
+      return this.$store.state.teams;
+    }
+  }
+};
 </script>
 
 <style scoped>
@@ -124,8 +113,8 @@ head * {
   max-height: 400px;
   overflow: auto;
 }
-.next ul {
-  list-style: none;
+.next ol li {
+  color: black;
 }
 
 li {

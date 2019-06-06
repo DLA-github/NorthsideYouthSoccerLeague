@@ -18,12 +18,12 @@ export default [{
         name: 'home',
         component: nyslHome
     },
-    {
+    // {
 
-        path: '/match',
-        name: 'match',
-        component: nyslMatch
-    },
+    //     path: '/match',
+    //     name: 'match',
+    //     component: nyslMatch
+    // },
     {
         path: '/class',
         name: 'classification',
@@ -60,7 +60,7 @@ export default [{
         component: nysldetailTeam,
     },
     {
-        path: '/class/res/det:id',
+        path: '/match:id',
         name: 'detail',
         component: nyslDetailMatch
     },

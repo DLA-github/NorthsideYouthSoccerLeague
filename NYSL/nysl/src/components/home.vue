@@ -11,7 +11,7 @@
   <div class="next">
     <ul>
       <li v-for="match in this.currentMatch">
-        <router-link :to="'/class/res/det:' + match">{{match}}</router-link>
+        <router-link :to="'/match' + match">{{match}}</router-link>
       </li>
     </ul>
   </div>
@@ -37,193 +37,27 @@
 export default {
   data() {
     return {
-      league: [
-        {
-          match: 1,
-          confrontation: [
-            "Mallorca-Atleti",
-            "Real Madrid-Barça",
-            "Valencia-Depor",
-            "Real Zaragoza-Sevilla",
-            "Atletico Bilbao-Real Sociedad"
-          ]
-        },
-        {
-          match: 2,
-          confrontation: [
-            "Atleti-Barça",
-            "Valencia-Mallorca",
-            "Real Madrid-Sevilla",
-            "Atletico Bilbao-Depor",
-            "Real Zaragoza-Real Sociedad"
-          ]
-        },
-        {
-          match: 3,
-          confrontation: [
-            "Valencia-Atleti",
-            "Barça-Sevilla",
-            "Real Madrid-Real Sociedad",
-            "Real Zaragoza-Depor",
-            "Atletico Bilbao-Mallorca"
-          ]
-        },
-        {
-          match: 4,
-          confrontation: [
-            "Atleti-Sevilla",
-            "Atletico Bilbao-Valencia",
-            "Barça-Real Sociedad",
-            "Real Zaragoza-Mallorca",
-            "Real Madrid-Depor"
-          ]
-        },
-        {
-          match: 5,
-          confrontation: [
-            "Atletico Bilbao-Atleti",
-            "Sevilla-Real Sociedad",
-            "Real Zaragoza-Valencia",
-            "Barça-Depor",
-            "Real Madrid-Mallorca"
-          ]
-        },
-        {
-          match: 6,
-          confrontation: [
-            "Atleti-Real Sociedad",
-            "Real Zaragoza-Atletico Bilbao",
-            "Sevilla-Depor",
-            "Real Madrid-Valencia",
-            "Barça-Mallorca"
-          ]
-        },
-        {
-          match: 7,
-          confrontation: [
-            "Mallorca-Atleti",
-            "Real Madrid-Barça",
-            "Valencia-Depor",
-            "Real Zaragoza-Sevilla",
-            "Atletico Bilbao-Real Sociedad"
-          ]
-        },
-        {
-          match: 8,
-          confrontation: [
-            "Mallorca-Atleti",
-            "Real Madrid-Barça",
-            "Valencia-Depor",
-            "Real Zaragoza-Sevilla",
-            "Atletico Bilbao-Real Sociedad"
-          ]
-        },
-        {
-          match: 9,
-          confrontation: [
-            "Mallorca-Atleti",
-            "Real Madrid-Barça",
-            "Valencia-Depor",
-            "Real Zaragoza-Sevilla",
-            "Atletico Bilbao-Real Sociedad"
-          ]
-        },
-        {
-          match: 10,
-          confrontation: [
-            "Mallorca-Atleti",
-            "Real Madrid-Barça",
-            "Valencia-Depor",
-            "Real Zaragoza-Sevilla",
-            "Atletico Bilbao-Real Sociedad"
-          ]
-        },
-        {
-          match: 11,
-          confrontation: [
-            "Mallorca-Atleti",
-            "Real Madrid-Barça",
-            "Valencia-Depor",
-            "Real Zaragoza-Sevilla",
-            "Atletico Bilbao-Real Sociedad"
-          ]
-        },
-        {
-          match: 12,
-          confrontation: [
-            "Mallorca-Atleti",
-            "Real Madrid-Barça",
-            "Valencia-Depor",
-            "Real Zaragoza-Sevilla",
-            "Atletico Bilbao-Real Sociedad"
-          ]
-        },
-        {
-          match: 13,
-          confrontation: [
-            "Mallorca-Atleti",
-            "Real Madrid-Barça",
-            "Valencia-Depor",
-            "Real Zaragoza-Sevilla",
-            "Atletico Bilbao-Real Sociedad"
-          ]
-        },
-        {
-          match: 14,
-          confrontation: [
-            "Mallorca-Atleti",
-            "Real Madrid-Barça",
-            "Valencia-Depor",
-            "Real Zaragoza-Sevilla",
-            "Atletico Bilbao-Real Sociedad"
-          ]
-        },
-        {
-          match: 15,
-          confrontation: [
-            "Mallorca-Atleti",
-            "Real Madrid-Barça",
-            "Valencia-Depor",
-            "Real Zaragoza-Sevilla",
-            "Atletico Bilbao-Real Sociedad"
-          ]
-        },
-        {
-          match: 16,
-          confrontation: [
-            "Mallorca-Atleti",
-            "Real Madrid-Barça",
-            "Valencia-Depor",
-            "Real Zaragoza-Sevilla",
-            "Atletico Bilbao-Real Sociedad"
-          ]
-        },
-        {
-          match: 17,
-          confrontation: [
-            "Mallorca-Atleti",
-            "Real Madrid-Barça",
-            "Valencia-Depor",
-            "Real Zaragoza-Sevilla",
-            "Atletico Bilbao-Real Sociedad"
-          ]
-        },
-        {
-          match: 18,
-          confrontation: [
-            "Mallorca-Atleti",
-            "Real Madrid-Barça",
-            "Valencia-Depor",
-            "Real Zaragoza-Sevilla",
-            "Atletico Bilbao-Real Sociedad"
-          ]
-        }
-      ],
       currentMatch: []
     };
   },
   created() {
-    this.currentMatch = this.league[0].confrontation;
+    //let now = new Date();
+    let first = true;
+    let now = Date.parse("Jun 22, 2019");
+    this.league.map(a => {
+      let date = Date.parse(a.date);
+      if (now < date && first == true) {
+        first = false;
+        this.currentMatch = a.confrontation;
+        console.log(this.currentMatch);
+        return;
+      }
+    });
+  },
+  computed: {
+    league() {
+      return this.$store.state.league;
+    }
   }
 };
 </script>
