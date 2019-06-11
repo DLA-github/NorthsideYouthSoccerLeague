@@ -1,26 +1,33 @@
 <template>
-  <div id="app">
-    <router-view></router-view>
-  </div>
+  <v-app>
+    <v-content>
+      <toolbar></toolbar>
+      <router-view></router-view>
+      <controls></controls>
+    </v-content>
+  </v-app>
 </template>
 
 <script>
-import nyslChat from "./components/chat.vue";
-import nyslPlayers from "./components/players.vue";
-import nyslHome from "./components/home.vue";
-import nyslDetailMatch from "./components/detailMatch.vue";
-import nyslMatch from "./components/match.vue";
-import nyslResults from "./components/results.vue";
-import nyslSchedule from "./components/schedule.vue";
-import nyslTeams from "./components/teams.vue";
-import nysldetailTeam from "./components/detailTeam.vue";
-import nyslClassification from "./components/classification.vue";
-import nyslLogin from "./components/login.vue";
-import nyslRegistration from "./components/register.vue";
+import nyslChat from "./views/chat.vue";
+import nyslPlayers from "./views/players.vue";
+import nyslHome from "./views/home";
+import nyslDetailMatch from "./views/detailMatch.vue";
+import nyslMatch from "./views/match.vue";
+import nyslResults from "./views/results.vue";
+import nyslSchedule from "./views/schedule.vue";
+import nyslTeams from "./views/teams.vue";
+import nysldetailTeam from "./views/detailTeam.vue";
+import nyslClassification from "./views/classification.vue";
+import nyslLogin from "./views/login.vue";
+import nyslRegistration from "./views/register.vue";
+import toolbar from "./components/toolbar.vue";
+import controls from "./components/controls.vue";
 
 export default {
-  name: "app",
+  name: "App",
   components: {
+    toolbar,
     nyslChat,
     nyslPlayers,
     nyslLogin,
@@ -31,10 +38,12 @@ export default {
     nyslSchedule,
     nyslTeams,
     nysldetailTeam,
-    nyslClassification
+    controls
+  },
+  data() {
+    return {
+      //
+    };
   }
 };
 </script>
-
-<style>
-</style>
