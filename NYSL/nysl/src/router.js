@@ -38,9 +38,12 @@ export default new Router({
       component: nyslTeams
     },
     {
-      path: '/chat/chat',
+      path: '/chat:id',
       name: 'chat',
-      component: nyslChat
+      component: nyslChat,
+      meta: {
+        protected: true
+      }
     },
     {
       path: '/class/sched',
@@ -53,9 +56,10 @@ export default new Router({
       component: nyslResults
     },
     {
-      path: '/team/pl:id',
+      path: '/player:id',
       name: 'player',
-      component: nyslPlayers
+      component: nyslPlayers,
+
     },
     {
       path: '/team/t:id',
@@ -68,14 +72,14 @@ export default new Router({
       component: nyslDetailMatch
     },
     {
-      path: '/chat/log',
+      path: '/log:id',
       name: 'login',
       component: nyslLogin
     },
-    {
-      path: '/chat/reg',
-      name: 'registration',
-      component: nyslRegistration
-    },
+    // {
+    //   path: '/chat/reg',
+    //   name: 'registration',
+    //   component: nyslRegistration
+    // },
   ]
 })

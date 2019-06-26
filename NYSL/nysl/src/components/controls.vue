@@ -12,7 +12,7 @@
         </router-link>
       </v-flex>
       <v-flex xs4 class="text-xs-center">
-        <router-link to="/chat/log">
+        <router-link to="/chat:all">
           <v-icon x-large>fas fa-comments</v-icon>
         </router-link>
       </v-flex>
@@ -20,7 +20,18 @@
   </v-toolbar>
 </template>
 <script>
-export default {};
+import { mapState } from "vuex";
+export default {
+  data() {
+    return {};
+  },
+  mounted() {
+    // console.log(this.user);
+  },
+  computed: {
+    ...mapState(["user"])
+  }
+};
 </script>
 <style scoped>
 a {

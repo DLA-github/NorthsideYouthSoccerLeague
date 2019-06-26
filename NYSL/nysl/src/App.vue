@@ -26,6 +26,9 @@ import controls from "./components/controls.vue";
 
 export default {
   name: "App",
+  created() {
+    this.$store.dispatch("loadData");
+  },
   components: {
     toolbar,
     nyslChat,
@@ -47,3 +50,9 @@ export default {
   }
 };
 </script>
+<style>
+.v-content {
+  background-color: #455a64;
+}
+</style>
+

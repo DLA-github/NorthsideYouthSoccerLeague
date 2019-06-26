@@ -1,10 +1,37 @@
 <template>
-  <div>Registration</div>
+  <v-card min-height="550">
+    <v-toolbar>
+      <v-layout justify-center>
+        <v-toolbar-title>CHAT</v-toolbar-title>
+      </v-layout>
+    </v-toolbar>
+    <v-form class="text-xs-center pa-3">
+      <p>Join Us. Register</p>
+      <v-layout justify-center>
+        <v-flex xs6>
+          <v-text-field v-model="user" label="User" required></v-text-field>
+        </v-flex>
+      </v-layout>
+      <v-layout justify-center>
+        <v-flex xs6>
+          <v-text-field v-model="password" label="Password" required></v-text-field>
+        </v-flex>
+      </v-layout>
+      <v-flex>
+        <button>Go</button>
+      </v-flex>
+    </v-form>
+  </v-card>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      user: "",
+      password: ""
+    };
+  }
+};
 </script>
 
-<style>
-</style>
